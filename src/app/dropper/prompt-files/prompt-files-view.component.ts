@@ -1,0 +1,47 @@
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FileHandlerService } from '../../shared/services/file-handler.service';
+
+@Component({
+  selector: 'drpr-prompt-files',
+  templateUrl: './prompt-files-view.component.html',
+  styleUrls: ['./prompt-files-view.component.css']
+})
+export class PromptFilesViewComponent implements OnInit {
+  @ViewChild('fileInput', {read: ElementRef}) fileInput: ElementRef<HTMLInputElement>;
+  @Output() receivedFilesOutput: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private fileHandlerService: FileHandlerService) { }
+
+  ngOnInit() {
+  }
+
+  /**
+   * @description throw an event of type 'change' after inspecting that files pass their tests
+   *            (in dropper service)
+   * @param ev: change event
+   */
+  handleFilesAdded(ev) {
+    console.log('ev.type: ', ev.type);
+    console.log(`Received ${ev.target.files.length} files from user selection prompt, inspecting files...`);
+    this.receivedFilesOutput.emit(this.fileHandlerService.inspectFiles(ev.target.files));
+  }
+
+  /**
+   * @description Very likely called from directive event emitter
+   * @param ev: should be change event
+   */
+  transferFilesFromDragAndDrop(ev: Event) {
+    if (ev.type === 'change') {
+      console.log('Received ', ev.type, ' event from directive');
+    }
+  }
+
+  /**
+   * @description Very likely called from directive event emitter
+   * @param files: should be (emitted event) from drag and drop directive
+   */
+  addFilesFromDragAndDrop(files: File[]) {
+    console.log('Received ', files.length, ' from dragging and dropping, inspecting files...');
+    this.fileHandlerService.inspectFiles(files);
+  }
+}

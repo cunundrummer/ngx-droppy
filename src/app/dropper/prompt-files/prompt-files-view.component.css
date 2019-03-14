@@ -1,0 +1,34 @@
+.title-container {
+  display: grid;
+  width: inherit;
+  height: inherit;
+  align-content: center;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.browse-btn {
+  font: 400 27px system-ui;
+  color: rgba(34, 117, 215, .9);
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.instruction {
+  margin: auto;
+  max-width: 400px;
+  font-size: 27px;
+  font-weight: 400;
+  color: #525252;
+  text-align: center;
+}
+
+.hide-overlay {
+  visibility: hidden;
+}
+
+.show-overlay {
+  visibility: visible;
+}

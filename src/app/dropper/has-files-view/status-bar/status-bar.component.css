@@ -1,0 +1,19 @@
+.status-bar-container {
+  display: grid;
+  grid-template-columns: 1fr 50% 1fr;
+  height: 50px;
+  background-color: transparent;
+  border-top: 1px solid darkgrey;
+}
+
+.btn-content {
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  color: #2275d7;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+}

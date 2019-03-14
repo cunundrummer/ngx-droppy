@@ -1,0 +1,17 @@
+<div class="content-bar-container">
+  <button class="btn-content" (click)="cancel()">Cancel</button>
+  <div class="selected-files" role="heading" aria-level="h1">{{buildNumFilesString()}}</div>
+  <button class="btn-content" (click)="fileInputAdd.click()">
+    <input
+      #fileInputAdd
+      type="file"
+      multiple
+      accept="image/*"
+      hidden
+      value=""
+      (click)="fileInputAdd.value=null"
+      (change)="addFiles($event)"
+    >
+    <i class="material-icons">add</i>
+  </button>
+</div>

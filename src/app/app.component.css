@@ -1,0 +1,28 @@
+.main-dropper-container {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;*/
+  width: 600px;
+  height: 500px;
+
+  border: 1px dashed darkgrey;
+  border-radius: .5rem;
+  background-color: #fafafa;
+  color: #34495e;
+}
+
+.prompt-view {
+  height: inherit;
+  width: inherit;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+}
+
+.files-view {
+  display: grid;
+  grid-template-rows: 50px auto 50px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

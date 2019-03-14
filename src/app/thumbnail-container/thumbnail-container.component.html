@@ -1,0 +1,24 @@
+<div class="thumb-container">
+
+  <!--button color="black" class="action-button" (click)="deleteImg()">
+    <i class="material-icons">remove_circle_outline</i>
+  </button-->
+
+  <div class="img-container">
+    <img #img [src]="readerResult | async">
+  </div>
+
+  <div class="thumb-info-container">
+    <div class="thumb-name">{{thumbnailFromFile.description.truncatedName}}</div>
+    <div class="thumb-options">
+      <span class="thumb-size">{{thumbnailFromFile.description.sizeInReadableFormat}}</span>
+      <button class="edit-button" (click)="edit()">Edit</button>
+      <button color="black" class="action-button" (click)="deleteImg()">
+        <i class="material-icons">delete_forever</i>
+      </button>
+    </div>
+  </div>
+</div>
+<!--
+progress: {{readerProgress$ | async}}%
+-->

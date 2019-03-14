@@ -1,0 +1,53 @@
+<div class="img-to-be-cropped-container">
+
+  <div class="button-bar button-bar-top">
+    <div class="filename-display">editing {{originalFilename}}</div>
+    <div class="toolbar toolbar-top">
+      <button type="button" (click)="cancel()">
+        <i class="material-icons">cancel</i>
+      </button>
+      <button type="button" (click)="undo()">
+        <i class="material-icons">undo</i>
+      </button>
+      <button type="button" (click)="save()" [hidden]="isEdited">
+        <i class="material-icons">save</i>
+      </button>
+    </div>
+  </div>
+
+  <div #imgContainer class="maxheight">
+    <img #imgToBeCropped>
+  </div>
+
+  <div class="button-bar button-bar-bottom">
+    <div class="toolbar toolbar-bottom">
+      <button type="button" (click)="cropBegin()">
+        <i class="material-icons">crop</i>
+      </button>
+      <button type="button" (click)="zoomIn()">
+        <i class="material-icons">zoom_in</i>
+      </button>
+      <button type="button" (click)="zoomOut()">
+        <i class="material-icons">zoom_out</i>
+      </button>
+      <button type="button" (click)="rotateRight()">
+        <i class="material-icons">rotate_right</i>
+      </button>
+      <button type="button" (click)="rotateLeft()">
+        <i class="material-icons">rotate_left</i>
+      </button>
+      <button type="button" (click)="cropDone()" *ngIf="(cropperIsToggled | async) as cropStatus">
+        <i class="material-icons btn-done">done</i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="inputs">
+  <mat-form-field class="">
+    <mat-label>Caption</mat-label>
+    <textarea matInput
+              #captionInput
+              placeholder="Enter optional caption describing your picture"></textarea>
+  </mat-form-field>
+</div>

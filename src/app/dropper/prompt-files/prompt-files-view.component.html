@@ -1,0 +1,22 @@
+<div class="title-container"
+     drprDropzone
+     (dropZoneTransferFilesFromDragAndDrop)="transferFilesFromDragAndDrop($event)"
+     (dropZoneFilesToTransfer)="addFilesFromDragAndDrop($event)"
+>
+  <div class="instruction">
+    Drop files here, or <!--, paste,-->
+    <button class="browse-btn" (click)="fileInput.click()">
+      <input
+        #fileInput
+        type="file"
+        multiple
+        accept="image/*"
+        hidden
+        value=""
+        (click)="fileInput.value=null"
+        (change)="handleFilesAdded($event)"
+      >
+      browse
+    </button> files... <!--or import from camera | other...-->
+  </div>
+</div>

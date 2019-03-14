@@ -1,0 +1,21 @@
+<drpr-content-bar class="content-bar"></drpr-content-bar>
+  <div #thumbParent
+       drprDropzone
+       (dropZoneTransferFilesFromDragAndDrop)="transferFilesFromDragAndDrop($event)"
+       (dropZoneFilesToTransfer)="addFilesFromDragAndDrop($event)"
+       class="thumbnail-container thumbnail-container-grid"
+       (dragover)="$event.preventDefault()"
+       (dragenter)="onDragEnter($event)"
+       [sortablejs]="files"
+       [sortablejsOptions]="options"
+  >
+    <drpr-thumbnail-container class="center"
+                              #thumb
+                              *ngFor="let file of files; let index=index"
+                              [iFile]="file"
+                              [fileIndex]="index"
+                              (deleteEmitter)="removeThumbnail($event)"
+    ></drpr-thumbnail-container>
+</div>
+<drpr-status-bar class="status-bar"></drpr-status-bar>
+
