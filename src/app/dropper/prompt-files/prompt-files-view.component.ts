@@ -25,23 +25,4 @@ export class PromptFilesViewComponent implements OnInit {
     console.log(`Received ${ev.target.files.length} files from user selection prompt, inspecting files...`);
     this.receivedFilesOutput.emit(this.fileHandlerService.inspectFiles(ev.target.files));
   }
-
-  /**
-   * @description Very likely called from directive event emitter
-   * @param ev: should be change event
-   */
-  transferFilesFromDragAndDrop(ev: Event) {
-    if (ev.type === 'change') {
-      console.log('Received ', ev.type, ' event from directive');
-    }
-  }
-
-  /**
-   * @description Very likely called from directive event emitter
-   * @param files: should be (emitted event) from drag and drop directive
-   */
-  addFilesFromDragAndDrop(files: File[]) {
-    console.log('Received ', files.length, ' from dragging and dropping, inspecting files...');
-    this.fileHandlerService.inspectFiles(files);
-  }
 }

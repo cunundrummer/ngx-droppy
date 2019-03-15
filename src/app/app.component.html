@@ -1,7 +1,14 @@
 <!--*******MAIN APP(DROPPER) CONTAINER*******-->
 <div #mainDropperContainer class="main-dropper-container">
-  <div class="prompt-view" *ngIf="(numFilesInDropper$ | async) === 0; else showPromptFiles">
-    <drpr-prompt-files class="prompt-view" #promptFiles (receivedFilesOutput)="checkIfReceivedFiles($event)"></drpr-prompt-files>
+  <div drprDropzone
+       (dropZoneTransferFilesFromDragAndDrop)="transferFilesFromDragAndDrop($event)"
+       (dropZoneFilesToTransfer)="addFilesFromDragAndDrop($event)"
+       class="prompt-view"
+       *ngIf="(numFilesInDropper$ | async) === 0; else showHasFilesView">
+    <drpr-prompt-files #promptFiles
+                       class="prompt-view"
+                       (receivedFilesOutput)="checkIfReceivedFiles($event)">
+    </drpr-prompt-files>
   </div>
 </div>
 
@@ -9,10 +16,15 @@
 <hr>
 <br />
 <div>
-<!--was used as a debugger that keeps track of files.-->
+  <!--was used as a debugger that keeps track of files.-->
   Files in dropper: {{numFilesInDropper$ | async}}
 </div>
 
-<ng-template #showPromptFiles>
-  <drpr-has-files-view class="" [numFiles]="numFilesInDropper$"></drpr-has-files-view>
+<ng-template #showHasFilesView>
+  <drpr-has-files-view
+    drprDropzone
+    (dropZoneTransferFilesFromDragAndDrop)="transferFilesFromDragAndDrop($event)"
+    (dropZoneFilesToTransfer)="addFilesFromDragAndDrop($event)"
+    [numFiles]="numFilesInDropper$">
+  </drpr-has-files-view>
 </ng-template>
